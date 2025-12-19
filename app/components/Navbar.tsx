@@ -1,0 +1,202 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Menu, X, Moon, Sun, Home, Images } from 'lucide-react';
+
+interface NavbarProps {
+    darkMode: boolean;
+    onToggleDarkMode: () => void;
+}
+
+export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
+
+    const navigation = [
+        { name: '每月课题', href: '/', icon: Home },
+        { name: '群相册', href: '/photos', icon: Images },
+    ];
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen);
+    };
+
+    const closeMobileMenu = () => {
+        setMobileMenuOpen(false);
+    };
+
+    return (
+        <>
+            {/* 桌面端导航栏 */}
+            <nav className="hidden lg:block border-b bg-white/80 dark:bg-gray-900/80 backdrop-blur-md dark:border-gray-700">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex items-center justify-between h-16">
+                        {/* Logo */}
+                        <div className="flex items-center">
+                            <Link href="/" className="flex items-center space-x-2">
+                                <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+                                    <Home className="w-5 h-5 text-white" />
+                                </div>
+                                <span className="text-xl font-bold text-gray-900 dark:text-white">
+                                    漳州太鼓
+                                </span>
+                            </Link>
+                        </div>
+
+                        {/* 导航链接 */}
+                        <div className="flex items-center space-x-4">
+                            {navigation.map((item) => {
+                                const Icon = item.icon;
+                                const isActive = pathname === item.href;
+                                return (
+                                    <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors ${isActive
+                                            ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
+                                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                                            }`}
+                                    >
+                                        <Icon className="w-4 h-4" />
+                                        <span>{item.name}</span>
+                                    </Link>
+                                );
+                            })}
+
+                            {/* 主题切换按钮 */}
+                            <button
+                                onClick={onToggleDarkMode}
+                                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                                aria-label={darkMode ? '切换到亮色模式' : '切换到暗色模式'}
+                            >
+                                {darkMode ? (
+                                    <Sun className="w-5 h-5 text-yellow-500" />
+                                ) : (
+                                    <Moon className="w-5 h-5 text-gray-700" />
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            {/* 移动端顶部栏 */}
+            <header className="lg:hidden sticky top-0 z-50 border-b bg-white/80 dark:bg-gray-900/80 backdrop-blur-md dark:border-gray-700">
+                <div className="px-4 py-3">
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                            <button
+                                onClick={toggleMobileMenu}
+                                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                                aria-label="打开菜单"
+                            >
+                                {mobileMenuOpen ? (
+                                    <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                                ) : (
+                                    <Menu className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                                )}
+                            </button>
+                            <Link href="/" className="flex items-center space-x-2">
+                                <div className="w-6 h-6 rounded-md bg-blue-600 flex items-center justify-center">
+                                    <Home className="w-4 h-4 text-white" />
+                                </div>
+                                <span className="text-lg font-bold text-gray-900 dark:text-white">
+                                    漳州太鼓
+                                </span>
+                            </Link>
+                        </div>
+                        <button
+                            onClick={onToggleDarkMode}
+                            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                            aria-label={darkMode ? '切换到亮色模式' : '切换到暗色模式'}
+                        >
+                            {darkMode ? (
+                                <Sun className="w-5 h-5 text-yellow-500" />
+                            ) : (
+                                <Moon className="w-5 h-5 text-gray-700" />
+                            )}
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            {/* 移动端菜单遮罩 */}
+            {mobileMenuOpen && (
+                <div
+                    className="lg:hidden fixed inset-0 z-40 bg-black/50"
+                    onClick={closeMobileMenu}
+                />
+            )}
+
+            {/* 移动端侧边栏菜单 */}
+            <div className={`
+        lg:hidden fixed top-0 left-0 z-50 h-full w-64
+        transform transition-transform duration-300 ease-in-out
+        ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+        bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700
+        overflow-y-auto
+      `}>
+                <div className="p-4">
+                    <div className="flex items-center justify-between mb-8">
+                        <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+                            每月课题
+                        </h1>
+                        <button
+                            onClick={closeMobileMenu}
+                            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                            aria-label="关闭菜单"
+                        >
+                            <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                        </button>
+                    </div>
+
+                    {/* 移动端导航链接 */}
+                    <nav className="space-y-2">
+                        {navigation.map((item) => {
+                            const Icon = item.icon;
+                            const isActive = pathname === item.href;
+                            return (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    onClick={closeMobileMenu}
+                                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${isActive
+                                        ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
+                                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                                        }`}
+                                >
+                                    <Icon className="w-5 h-5" />
+                                    <span className="font-medium">{item.name}</span>
+                                </Link>
+                            );
+                        })}
+                    </nav>
+
+                    {/* 移动端主题切换 */}
+                    <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <button
+                            onClick={onToggleDarkMode}
+                            className="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                        >
+                            <div className="flex items-center space-x-3">
+                                {darkMode ? (
+                                    <Sun className="w-5 h-5 text-yellow-500" />
+                                ) : (
+                                    <Moon className="w-5 h-5 text-gray-700" />
+                                )}
+                                <span className="font-medium text-gray-700 dark:text-gray-300">
+                                    {darkMode ? '亮色模式' : '暗色模式'}
+                                </span>
+                            </div>
+                            <span className="text-sm text-gray-500 dark:text-gray-400">
+                                点击切换
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
