@@ -30,18 +30,15 @@ export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
     return (
         <>
             {/* 桌面端导航栏 */}
-            <nav className="hidden lg:block border-b bg-white/80 dark:bg-gray-900/80 backdrop-blur-md dark:border-gray-700">
+            <nav className="hidden lg:block">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
                         <div className="flex items-center">
                             <Link href="/" className="flex items-center space-x-2">
-                                <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
-                                    <Home className="w-5 h-5 text-white" />
-                                </div>
-                                <span className="text-xl font-bold text-gray-900 dark:text-white">
+                                <h1 className="text-2xl font-bold text-black dark:text-white">
                                     漳州太鼓
-                                </span>
+                                </h1>
                             </Link>
                         </div>
 
@@ -83,7 +80,7 @@ export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
             </nav>
 
             {/* 移动端顶部栏 */}
-            <header className="lg:hidden sticky top-0 z-50 border-b bg-white/80 dark:bg-gray-900/80 backdrop-blur-md dark:border-gray-700">
+            <header className="lg:hidden sticky top-0 z-50 border-b bg-white/10 dark:bg-gray-900/10 backdrop-blur-md dark:border-gray-700/50">
                 <div className="px-4 py-3">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">

@@ -157,7 +157,6 @@ export default function PhotoDetailModal({ photo, isOpen, onClose }: PhotoDetail
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </>

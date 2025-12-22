@@ -9,17 +9,20 @@ export default function HomePage() {
 
   // 切换暗色模式
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    if (!darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    setDarkMode(prevDarkMode => {
+      const newDarkMode = !prevDarkMode;
+      if (newDarkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      return newDarkMode;
+    });
   };
 
 
   return (
-    <div className={`min-h-screen transition-colors duration-200 ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen transition-colors duration-200 ${darkMode ? 'dark' : ''}`}>
       {/* 导航栏 */}
       <Navbar darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
 
