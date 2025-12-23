@@ -96,3 +96,24 @@ export interface SongOption {
     title_cn: string;
     levels: string[]; // 可用的难度等级
 }
+
+// 课题数据文件类型
+export interface ChallengeDataFile {
+    challenges: Challenge[];
+    generatedAt: string;
+    totalChallenges: number;
+}
+
+// 月度课题数据
+export interface MonthlyChallengeData {
+    yearMonth: string;  // 格式: "2025-12"
+    fileName: string;   // 文件名: "2025-12.json"
+    data: ChallengeDataFile;
+}
+
+// 数据加载状态
+export interface DataLoadState {
+    isLoading: boolean;
+    error: string | null;
+    data: MonthlyChallengeData[];
+}

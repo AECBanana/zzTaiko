@@ -15,8 +15,21 @@ export default function ChallengeGeneratorPage() {
     const [darkMode, setDarkMode] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
 
-    // 初始化：加载歌曲选项
+    // 初始化：从localStorage加载已保存的课题，并加载歌曲选项
     useEffect(() => {
+        // 从localStorage加载已保存的课题
+        const savedChallenges = localStorage.getItem('taiko_challenges');
+        if (savedChallenges) {
+            try {
+                const parsedChallenges = JSON.parse(savedChallenges);
+                setChallenges(parsedChallenges);
+            } catch (error) {
+                console.error('加载已保存课题失败:', error);
+                // 如果解析失败，清空localStorage中的数据
+                localStorage.removeItem('taiko_challenges');
+            }
+        }
+
         loadSongOptions();
     }, []);
 
@@ -64,6 +77,16 @@ export default function ChallengeGeneratorPage() {
         }
     };
 
+    // 保存课题到localStorage
+    useEffect(() => {
+        if (challenges.length > 0) {
+            localStorage.setItem('taiko_challenges', JSON.stringify(challenges));
+        } else {
+            // 如果课题为空，从localStorage中移除数据
+            localStorage.removeItem('taiko_challenges');
+        }
+    }, [challenges]);
+
     // 添加课题
     const handleAddChallenge = (challenge: Challenge) => {
         setChallenges(prev => [...prev, challenge]);
@@ -105,8 +128,15 @@ export default function ChallengeGeneratorPage() {
         const blob = new Blob([jsonString], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
+
+        // 生成年份-月份格式的文件名，例如：2025-12.json
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const fileName = `${year}-${month}.json`;
+
         a.href = url;
-        a.download = `课题生成_${new Date().toISOString().split('T')[0]}.json`;
+        a.download = fileName;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -140,7 +170,7 @@ export default function ChallengeGeneratorPage() {
                         课题生成器
                     </h1>
                     <p className="text-gray-600 dark:text-gray-400 mt-2">
-                        创建和管理太鼓达人课题，支持多个课题生成和JSON导出
+                        创建和管理课题
                     </p>
                 </div>
 
@@ -152,7 +182,6 @@ export default function ChallengeGeneratorPage() {
                                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                                     添加新课题
                                 </h2>
-                                <Plus className="w-5 h-5 text-blue-500" />
                             </div>
 
                             <ChallengeForm

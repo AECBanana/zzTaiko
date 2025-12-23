@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Challenge, ChallengeFormData, ChallengeReward, SongOption } from '@/app/types';
 import { fetchSongs } from '@/app/lib/api';
 import { Search, Music, Star, Target, Gift, MessageSquare, ChevronDown, Loader2, Plus } from 'lucide-react';
@@ -32,6 +32,7 @@ export default function ChallengeForm({
     const [stars, setStars] = useState<number>(0);
     const [showSongDropdown, setShowSongDropdown] = useState(false);
     const [songDetails, setSongDetails] = useState<any>(null);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     // 奖励选项
     const rewardOptions: ChallengeReward[] = ['15币', '30币', '45币', '其他奖励'];
@@ -64,6 +65,21 @@ export default function ChallengeForm({
             }
         }
     }, [selectedDifficulty, songDetails]);
+
+    // 点击外部关闭下拉框
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setShowSongDropdown(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
 
     // 获取歌曲详情
     const fetchSongDetails = async (songId: number) => {
@@ -141,6 +157,23 @@ export default function ChallengeForm({
         setShowSongDropdown(false);
     };
 
+    // 处理搜索框聚焦
+    const handleSearchFocus = () => {
+        // 只有当搜索框聚焦且有歌曲选项时，才打开下拉框
+        if (songOptions.length > 0) {
+            setShowSongDropdown(true);
+        }
+    };
+
+    // 处理搜索框变化
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onSearch(e.target.value);
+        // 如果搜索框有内容且用户正在输入（搜索框聚焦状态），自动展开下拉框
+        if (e.target.value.trim() !== '') {
+            setShowSongDropdown(true);
+        }
+    };
+
     // 处理难度选择
     const handleDifficultySelect = (difficulty: string) => {
         setSelectedDifficulty(difficulty);
@@ -170,7 +203,8 @@ export default function ChallengeForm({
                             <input
                                 type="text"
                                 value={searchQuery}
-                                onChange={(e) => onSearch(e.target.value)}
+                                onChange={handleSearchChange}
+                                onFocus={handleSearchFocus}
                                 placeholder="搜索歌曲..."
                                 className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
@@ -181,7 +215,7 @@ export default function ChallengeForm({
                     </div>
 
                     {/* 歌曲选择下拉框 */}
-                    <div className="relative">
+                    <div className="relative" ref={dropdownRef}>
                         <button
                             type="button"
                             onClick={() => setShowSongDropdown(!showSongDropdown)}

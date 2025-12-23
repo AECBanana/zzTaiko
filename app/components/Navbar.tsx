@@ -90,7 +90,7 @@ export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
             </nav>
 
             {/* 移动端顶部栏 */}
-            <header className="lg:hidden sticky top-0 z-50 border-b bg-white/10 dark:bg-gray-900/10 backdrop-blur-md dark:border-gray-700/50">
+            <header className="lg:hidden sticky top-0 z-50 bg-white/10 dark:bg-gray-900/10 dark:border-gray-700/50">
                 <div className="px-4 py-3">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
@@ -106,9 +106,6 @@ export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
                                 )}
                             </button>
                             <Link href="/" className="flex items-center space-x-2">
-                                <div className="w-6 h-6 rounded-md bg-blue-600 flex items-center justify-center">
-                                    <Home className="w-4 h-4 text-white" />
-                                </div>
                                 <span className="text-lg font-bold text-gray-900 dark:text-white">
                                     漳州太鼓
                                 </span>
