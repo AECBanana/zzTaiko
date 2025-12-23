@@ -7,7 +7,7 @@ import PhotoDetailModal from '@/app/components/PhotoDetailModal';
 import ImageModal from '@/app/components/ImageModal';
 import { Photo, Pagination } from '@/app/types';
 import { fetchPhotos } from '@/app/lib/api';
-import { Search } from 'lucide-react';
+import { Search, ChevronUp, X } from 'lucide-react';
 import { useDarkMode } from '@/app/hooks/useDarkMode';
 
 export default function PhotosPage() {
@@ -16,6 +16,7 @@ export default function PhotosPage() {
     const [loadingMore, setLoadingMore] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [sortBy, setSortBy] = useState('newest');
+    const [showControls, setShowControls] = useState(false); // 控制搜索栏显示/隐藏
     const { darkMode, toggleDarkMode, isUsingSystem, getToggleLabel, getToggleText } = useDarkMode();
     const [pagination, setPagination] = useState<Pagination>({
         page: 1,
@@ -147,58 +148,106 @@ export default function PhotosPage() {
             />
 
             {/* 主内容区域 */}
-            <main className="pt-4 px-4">
-                {/* 顶部控制栏 */}
-                <div className="mb-6">
-                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow">
-                        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                            {/* 搜索表单 */}
-                            <form onSubmit={handleSearch} className="flex-1">
-                                <div className="relative">
-                                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                    <input
-                                        type="text"
-                                        value={searchQuery}
-                                        onChange={(e) => setSearchQuery(e.target.value)}
-                                        placeholder="搜索标题或日期..."
-                                        className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="mt-2 lg:hidden w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                                >
-                                    搜索
-                                </button>
-                            </form>
+            <main className="pt-4 px-4 relative">
+                {/* 浮动搜索按钮 */}
+                <div className="fixed bottom-6 right-6 z-40">
+                    <button
+                        type="button"
+                        onClick={() => setShowControls(!showControls)}
+                        className="flex items-center justify-center w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200"
+                        aria-label="打开搜索"
+                        title="搜索照片"
+                    >
+                        {showControls ? (
+                            <X className="w-6 h-6" />
+                        ) : (
+                            <Search className="w-6 h-6" />
+                        )}
+                    </button>
+                </div>
 
-                            {/* 排序选项 */}
-                            <div className="lg:w-48">
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 lg:mb-0 lg:sr-only">
-                                    排序方式
-                                </label>
-                                <select
-                                    value={sortBy}
-                                    onChange={(e) => handleSortChange(e.target.value)}
-                                    className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                {/* 搜索卡片 - 弹出式 */}
+                {showControls && (
+                    <div className="fixed inset-0 z-30 flex items-start justify-center pt-20 px-4">
+                        {/* 遮罩层 */}
+                        <div
+                            className="absolute inset-0 bg-black/50"
+                            onClick={() => setShowControls(false)}
+                        />
+
+                        {/* 搜索卡片 */}
+                        <div className="relative w-full max-w-md bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-6">
+                            <div className="flex items-center justify-between mb-6">
+                                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                                    搜索照片
+                                </h2>
+                                <button
+                                    type="button"
+                                    onClick={() => setShowControls(false)}
+                                    className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                                    aria-label="关闭"
                                 >
-                                    <option value="newest">最新上传</option>
-                                    <option value="oldest">最早上传</option>
-                                    <option value="title">按标题排序</option>
-                                </select>
+                                    <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                                </button>
                             </div>
 
-                            {/* 桌面端搜索按钮 */}
-                            <button
-                                type="submit"
-                                onClick={handleSearch}
-                                className="hidden lg:block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap"
-                            >
-                                搜索
-                            </button>
+                            {/* 搜索表单 */}
+                            <form onSubmit={handleSearch} className="space-y-6">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                        搜索关键词
+                                    </label>
+                                    <div className="relative">
+                                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                        <input
+                                            type="text"
+                                            value={searchQuery}
+                                            onChange={(e) => setSearchQuery(e.target.value)}
+                                            placeholder="输入标题或日期..."
+                                            className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            autoFocus
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                        排序方式
+                                    </label>
+                                    <select
+                                        value={sortBy}
+                                        onChange={(e) => handleSortChange(e.target.value)}
+                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    >
+                                        <option value="newest">最新上传</option>
+                                        <option value="oldest">最早上传</option>
+                                        <option value="title">按标题排序</option>
+                                    </select>
+                                </div>
+
+                                <div className="flex gap-3 pt-4">
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowControls(false)}
+                                        className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                                    >
+                                        取消
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        onClick={() => {
+                                            handleSearch(new Event('submit') as any);
+                                            setShowControls(false);
+                                        }}
+                                        className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                                    >
+                                        搜索
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </div>
+                )}
 
                 <PhotoGallery
                     photos={photos}

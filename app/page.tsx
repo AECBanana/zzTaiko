@@ -66,14 +66,14 @@ export default function HomePage() {
         {/* 页面标题和刷新按钮 */}
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            每月课题
+            最新课题
           </h1>
         </div>
 
         {/* 加载状态 */}
         {isLoading && (
           <div className="flex flex-col items-center justify-center py-12">
-            <RefreshCw className="w-8 h-8 animate-spin mb-4 text-blue-500" />
+            <RefreshCw className="w-8 h-8 animate-spin mb-4 text-[#EA580C]" />
             <p className="text-gray-600 dark:text-gray-400">正在加载课题数据...</p>
           </div>
         )}
@@ -125,25 +125,35 @@ export default function HomePage() {
         {/* 表格展示 */}
         {!isLoading && !error && monthlyData.length > 0 && (
           <div className="space-y-8">
-            {monthlyData.map((monthData, index) => (
-              <div key={monthData.yearMonth}>
-                <div className="flex items-center gap-2 mb-4">
-                  <Calendar className="w-5 h-5 text-blue-500" />
-                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    {monthData.yearMonth}
-                    <span className="ml-2 text-sm font-normal text-gray-500 dark:text-gray-400">
-                      ({monthData.data.totalChallenges}首)
-                    </span>
-                  </h2>
+            {monthlyData.map((monthData, index) => {
+              // 第一个（最新）月份：showHeader={false} expandable={false}
+              // 剩下的旧月份：showHeader={true} expandable={true}
+              const isLatest = index === 0;
+              const showHeader = !isLatest;
+              const expandable = !isLatest;
+
+              return (
+                <div key={monthData.yearMonth}>
+                  {showHeader && (
+                    <div className="flex items-center gap-2 mb-4">
+                      <Calendar className="w-5 h-5 text-[#EA580C]" />
+                      <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                        {monthData.yearMonth}
+                        <span className="ml-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                          ({monthData.data.totalChallenges}首)
+                        </span>
+                      </h2>
+                    </div>
+                  )}
+                  <MonthlyChallengeTable
+                    monthlyData={monthData}
+                    darkMode={darkMode}
+                    showHeader={showHeader}
+                    expandable={expandable}
+                  />
                 </div>
-                <MonthlyChallengeTable
-                  monthlyData={monthData}
-                  darkMode={darkMode}
-                  showHeader={false}
-                  expandable={false}
-                />
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </main>

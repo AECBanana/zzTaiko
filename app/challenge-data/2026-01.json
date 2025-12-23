@@ -1,0 +1,39 @@
+{
+  "challenges": [
+    {
+      "id": "challenge_1766468302898_moezftnh1",
+      "songId": 274,
+      "songTitle": "蓄勢",
+      "songTitleCn": "蓄势",
+      "difficulty": "4",
+      "stars": 7.5,
+      "requiredScore": 80,
+      "reward": "15币",
+      "createdAt": "2025-12-23T05:38:22.898Z"
+    },
+    {
+      "id": "challenge_1766468317515_du3mbvkp3",
+      "songId": 285,
+      "songTitle": "千本桜",
+      "songTitleCn": "千本樱",
+      "difficulty": "5",
+      "stars": 8.6,
+      "requiredScore": 80,
+      "reward": "30币",
+      "createdAt": "2025-12-23T05:38:37.515Z"
+    },
+    {
+      "id": "challenge_1766468351310_6xns2kw6h",
+      "songId": 979,
+      "songTitle": "轟け！太鼓の達人",
+      "songTitleCn": "震天动地！太鼓之达人",
+      "difficulty": "4",
+      "stars": 8.9,
+      "requiredScore": 80,
+      "reward": "45币",
+      "createdAt": "2025-12-23T05:39:11.310Z"
+    }
+  ],
+  "generatedAt": "2025-12-23T05:39:26.520Z",
+  "totalChallenges": 3
+}

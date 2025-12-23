@@ -212,7 +212,7 @@ export default function ChallengeGeneratorPage() {
                                 <button
                                     onClick={handleGenerateJSON}
                                     disabled={challenges.length === 0}
-                                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="flex items-center gap-2 px-4 py-2 bg-[#EA580C]/80 text-white rounded-lg hover:bg-[#EA580C] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                 >
                                     <Download className="w-4 h-4" />
                                     生成JSON并下载
@@ -229,7 +229,7 @@ export default function ChallengeGeneratorPage() {
 
                                 <div className="ml-auto flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                                     <span>已添加课题:</span>
-                                    <span className="font-bold text-blue-600 dark:text-blue-400">
+                                    <span className="font-bold text-[#EA580C] dark:text-[#EA580C]">
                                         {challenges.length} 个
                                     </span>
                                 </div>

@@ -206,11 +206,11 @@ export default function ChallengeForm({
                                 onChange={handleSearchChange}
                                 onFocus={handleSearchFocus}
                                 placeholder="搜索歌曲..."
-                                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#EA580C] focus:border-transparent"
                             />
                         </div>
                         {loading && (
-                            <Loader2 className="w-5 h-5 text-blue-500 animate-spin" />
+                            <Loader2 className="w-5 h-5 text-[#EA580C] animate-spin" />
                         )}
                     </div>
 
@@ -224,8 +224,8 @@ export default function ChallengeForm({
                             <div className="flex items-center gap-3">
                                 {selectedSong ? (
                                     <>
-                                        <div className="w-8 h-8 rounded-md bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                                            <Music className="w-4 h-4 text-blue-600 dark:text-blue-300" />
+                                        <div className="w-8 h-8 rounded-md bg-[#EA580C] dark:bg-[#EA580C] flex items-center justify-center">
+                                            <Music className="w-4 h-4 text-white dark:text-[#EA580C]" />
                                         </div>
                                         <div>
                                             <div className="font-medium text-gray-900 dark:text-white">
@@ -300,7 +300,7 @@ export default function ChallengeForm({
                                 type="button"
                                 onClick={() => handleDifficultySelect(difficulty)}
                                 className={`px-4 py-2 rounded-lg transition-colors ${selectedDifficulty === difficulty
-                                    ? 'bg-blue-600 text-white'
+                                    ? 'bg-[#EA580C] text-white'
                                     : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                                     }`}
                             >
@@ -318,13 +318,13 @@ export default function ChallengeForm({
 
             {/* 星数显示 */}
             {stars > 0 && (
-                <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4">
+                <div className="bg-[#EA580C]/20 dark:bg-[#EA580C]/10 rounded-lg p-4">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                             <Star className="w-5 h-5 text-yellow-500" />
                             <span className="font-medium text-gray-900 dark:text-white">星数</span>
                         </div>
-                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                        <div className="text-2xl font-bold text-[#EA580C] dark:text-[#EA580C]">
                             {stars.toFixed(1)}
                         </div>
                     </div>
@@ -368,7 +368,7 @@ export default function ChallengeForm({
                             type="button"
                             onClick={() => handleRewardSelect(reward)}
                             className={`px-4 py-3 rounded-lg transition-colors ${formData.reward === reward
-                                ? 'bg-blue-600 text-white'
+                                ? 'bg-[#EA580C] text-white'
                                 : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                                 }`}
                         >
@@ -411,7 +411,7 @@ export default function ChallengeForm({
             {/* 提交按钮 */}
             <button
                 type="submit"
-                className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center justify-center gap-2"
+                className="w-full py-3 bg-[#EA580C]/80 text-white rounded-lg hover:bg-[#EA580C] transition-colors font-medium flex items-center justify-center gap-2"
             >
                 <Plus className="w-5 h-5" />
                 添加课题
