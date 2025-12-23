@@ -129,11 +129,10 @@ export default function MonthlyChallengeTable({
                                                 <div className={`font-medium ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                                                     {challenge.songTitleCn}
                                                 </div>
-                                                {challenge.songTitleCn && (
-                                                    <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                                                        {challenge.songTitle}
-                                                    </div>
-                                                )}
+                                                <div className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                                                    {challenge.songTitle}
+                                                </div>
+
                                             </div>
                                         </td>
                                         <td className={`py-3 px-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'} whitespace-nowrap`}>
@@ -148,19 +147,19 @@ export default function MonthlyChallengeTable({
                                         </td>
                                         <td className={`py-3 px-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'} whitespace-nowrap`}>
                                             <div className="flex items-center gap-1">
-                                                <Star className="w-3 h-3 text-yellow-500" />
+                                                <Star className="w-6 h-6 text-yellow-500" />
                                                 <span className="text-sm sm:text-base">{challenge.stars.toFixed(1)}</span>
                                             </div>
                                         </td>
                                         <td className={`py-3 px-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'} whitespace-nowrap`}>
                                             <div className="flex items-center gap-1">
-                                                <Target className="w-3 h-3 text-red-500" />
+                                                <Target className="w-6 h-6 text-red-500" />
                                                 <span className="text-sm sm:text-base">{formatScore(challenge.requiredScore)}</span>
                                             </div>
                                         </td>
                                         <td className={`py-3 px-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'} whitespace-nowrap`}>
                                             <div className="flex items-center gap-1">
-                                                <Gift className="w-3 h-3 text-green-500" />
+                                                <Gift className="w-6 h-6 text-green-500" />
                                                 <span className="text-sm sm:text-base">{formatReward(challenge)}</span>
                                             </div>
                                         </td>

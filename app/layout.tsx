@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import localFont from 'next/font/local'
 
-const hkktl = localFont({
-  src: './font/华康勘亭流w9.ttf',
+const fallbackFont = localFont({
+  src: './font/J002-A-OTF-KanteiryuStd-Ultra.otf',
+  display: 'swap',
 })
 
+const hkktl = localFont({
+  src: './font/华康勘亭流w9.ttf',
+  fallback: ['fallbackFont']
+})
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "漳州太鼓",

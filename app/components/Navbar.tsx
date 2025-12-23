@@ -104,9 +104,14 @@ export default function Navbar({
                                 )}
                             </button>
                             <Link href="/" className="flex items-center space-x-2">
-                                <span className="text-lg font-bold text-gray-900 dark:text-white">
+                                <h1
+                                    className="text-2xl"
+                                    style={{
+                                        color: darkMode ? 'white' : '#FB923C'
+                                    }}
+                                >
                                     漳州太鼓
-                                </span>
+                                </h1>
                             </Link>
                         </div>
 
@@ -132,9 +137,6 @@ export default function Navbar({
       `}>
                 <div className="p-4">
                     <div className="flex items-center justify-between mb-8">
-                        <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                            每月课题
-                        </h1>
                         <button
                             onClick={closeMobileMenu}
                             className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -156,11 +158,11 @@ export default function Navbar({
                                     onClick={closeMobileMenu}
                                     className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${isActive
                                         ? darkMode
-                                            ? 'bg-blue-900/30 text-blue-300'
-                                            : 'bg-blue-100 text-blue-700'
+                                            ? 'bg-[#FFEDD5]/60 text-[#EA580C]'
+                                            : 'bg-[#FFEDD5]/60 text-[#EA580C]'
                                         : darkMode
-                                            ? 'text-gray-300 hover:bg-gray-800'
-                                            : 'text-gray-700 hover:bg-gray-100'
+                                            ? 'text-gray-300 hover:text-white hover:bg-[#EA580C]/80'
+                                            : 'text-gray-700 hover:text-white hover:bg-[#EA580C]/80'
                                         }`}
                                 >
                                     <Icon className="w-5 h-5" />
