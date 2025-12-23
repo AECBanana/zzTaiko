@@ -72,18 +72,8 @@ export default function HomePage() {
         {/* 页面标题和刷新按钮 */}
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            每月课题数据
+            每月课题
           </h1>
-
-          {!isLoading && (
-            <button
-              onClick={loadData}
-              className={`px-4 py-2 rounded-lg flex items-center gap-2 ${darkMode ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-800'}`}
-            >
-              <RefreshCw className="w-4 h-4" />
-              刷新数据
-            </button>
-          )}
         </div>
 
         {/* 加载状态 */}
