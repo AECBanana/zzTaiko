@@ -134,7 +134,7 @@ export default function HomePage() {
 
               return (
                 <div key={monthData.yearMonth}>
-                  {showHeader && (
+                  {!showHeader && (
                     <div className="flex items-center gap-2 mb-4">
                       <Calendar className="w-5 h-5 text-[#EA580C]" />
                       <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
