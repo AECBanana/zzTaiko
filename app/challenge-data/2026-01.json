@@ -32,8 +32,20 @@
       "requiredScore": 80,
       "reward": "45币",
       "createdAt": "2025-12-23T05:39:11.310Z"
+    },
+    {
+      "id": "challenge_1766495752228_ne38qf4oq",
+      "songId": 1383,
+      "songTitle": "SoulStone -闇喰イサァカス団-",
+      "songTitleCn": "SoulStone -噬暗马戏团-",
+      "difficulty": "4",
+      "stars": 10.4,
+      "requiredScore": 80,
+      "reward": "其他奖励",
+      "customReward": "osu!经典背景图厚卡片(先到先得，一人一张，库存2张)",
+      "createdAt": "2025-12-23T13:15:52.228Z"
     }
   ],
-  "generatedAt": "2025-12-23T05:39:26.520Z",
-  "totalChallenges": 3
+  "generatedAt": "2025-12-23T13:16:41.586Z",
+  "totalChallenges": 4
 }

@@ -129,7 +129,7 @@ export default function MonthlyChallengeTable({
                                                 <div className={`font-medium ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                                                     {challenge.songTitleCn}
                                                 </div>
-                                                <div className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                                                <div className={`${darkMode ? 'text-gray-400' : 'text-gray-400'}`}>
                                                     {challenge.songTitle}
                                                 </div>
 
