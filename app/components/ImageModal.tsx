@@ -77,7 +77,12 @@ export default function ImageModal({ photo, isOpen, onClose, onInfoClick }: Imag
             {/* 遮罩层 */}
             <div
                 className="fixed inset-0 z-50 bg-black/90 transition-opacity duration-300"
-                onClick={onClose}
+                onClick={(e) => {
+                    // 移动端防止误触，只在点击遮罩层本身时关闭
+                    if (e.target === e.currentTarget) {
+                        onClose();
+                    }
+                }}
             />
 
             {/* 图片模态框 */}
@@ -86,8 +91,8 @@ export default function ImageModal({ photo, isOpen, onClose, onInfoClick }: Imag
                 style={modalStyle}
             >
                 <div className={`relative ${isMobile && isFullscreen ? 'w-full h-full' : 'w-full h-full max-w-7xl max-h-[110vh]'}`}>
-                    {/* 顶部工具栏 - 移动端全屏时隐藏 */}
-                    {(!isMobile || !isFullscreen) && (
+                    {/* 顶部工具栏 - 移动端隐藏，桌面端显示 */}
+                    {!isMobile && (
                         <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10 flex items-center space-x-2 bg-black/50 backdrop-blur-sm rounded-full px-4 py-2">
                             <button
                                 onClick={handleZoomOut}
@@ -178,7 +183,11 @@ export default function ImageModal({ photo, isOpen, onClose, onInfoClick }: Imag
                                 }}
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    // 移动端点击图片切换全屏
+                                    // 移动端双击图片切换全屏，单击不处理
+                                }}
+                                onDoubleClick={(e) => {
+                                    e.stopPropagation();
+                                    // 移动端双击切换全屏
                                     if (isMobile) {
                                         toggleFullscreen();
                                     }

@@ -53,6 +53,11 @@ export default function PhotoGallery({
                                         <div
                                             className="relative aspect-square overflow-hidden cursor-pointer"
                                             onClick={() => onPhotoClick(photo)}
+                                            onTouchEnd={(e) => {
+                                                // 防止触摸事件触发多次点击
+                                                e.preventDefault();
+                                                onPhotoClick(photo);
+                                            }}
                                         >
                                             <Image
                                                 src={photo.imageUrl}

@@ -62,8 +62,17 @@ export default function ChallengeGeneratorPage() {
 
         setLoading(true);
         try {
-            const { songs } = await fetchSongs({ title: query, limit: 50 });
-            const options: SongOption[] = songs.map(song => ({
+            // 同时搜索英文标题和中文标题
+            const [englishResults, chineseResults] = await Promise.all([
+                fetchSongs({ title: query, limit: 50 }),
+                fetchSongs({ title_cn: query, limit: 50 })
+            ]);
+
+            // 合并结果，去重
+            const allSongs = [...englishResults.songs, ...chineseResults.songs];
+            const uniqueSongs = Array.from(new Map(allSongs.map(song => [song.id, song])).values());
+
+            const options: SongOption[] = uniqueSongs.map(song => ({
                 id: song.id,
                 title: song.title,
                 title_cn: song.title_cn,

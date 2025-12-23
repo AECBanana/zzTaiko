@@ -8,6 +8,7 @@ import ImageModal from '@/app/components/ImageModal';
 import { Photo, Pagination } from '@/app/types';
 import { fetchPhotos } from '@/app/lib/api';
 import { Search } from 'lucide-react';
+import { useDarkMode } from '@/app/hooks/useDarkMode';
 
 export default function PhotosPage() {
     const [photos, setPhotos] = useState<Photo[]>([]);
@@ -15,7 +16,7 @@ export default function PhotosPage() {
     const [loadingMore, setLoadingMore] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [sortBy, setSortBy] = useState('newest');
-    const [darkMode, setDarkMode] = useState(false);
+    const { darkMode, toggleDarkMode, isUsingSystem, getToggleLabel, getToggleText } = useDarkMode();
     const [pagination, setPagination] = useState<Pagination>({
         page: 1,
         limit: 20,
@@ -102,18 +103,6 @@ export default function PhotosPage() {
         fetchPhotosData(1, false);
     }, [fetchPhotosData]);
 
-    // 切换暗色模式
-    const toggleDarkMode = () => {
-        setDarkMode(prevDarkMode => {
-            const newDarkMode = !prevDarkMode;
-            if (newDarkMode) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-            return newDarkMode;
-        });
-    };
 
     // 打开图片模态框（点击卡片时）
     const openImageModal = (photo: Photo) => {
@@ -147,11 +136,14 @@ export default function PhotosPage() {
     };
 
     return (
-        <div className={`min-h-screen transition-colors duration-200 ${darkMode ? 'dark' : ''}`}>
+        <div className="min-h-screen transition-colors duration-200">
             {/* 导航栏 */}
             <Navbar
                 darkMode={darkMode}
                 onToggleDarkMode={toggleDarkMode}
+                isUsingSystem={isUsingSystem}
+                toggleLabel={getToggleLabel()}
+                toggleText={getToggleText()}
             />
 
             {/* 主内容区域 */}

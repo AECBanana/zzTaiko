@@ -8,9 +8,18 @@ import { Menu, X, Moon, Sun, Home, Images, FileText } from 'lucide-react';
 interface NavbarProps {
     darkMode: boolean;
     onToggleDarkMode: () => void;
+    isUsingSystem?: boolean;
+    toggleLabel?: string;
+    toggleText?: string;
 }
 
-export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
+export default function Navbar({
+    darkMode,
+    onToggleDarkMode,
+    isUsingSystem = false,
+    toggleLabel = darkMode ? '切换到亮色模式' : '切换到暗色模式',
+    toggleText = darkMode ? '亮色模式' : '暗色模式'
+}: NavbarProps) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const pathname = usePathname();
 
@@ -72,18 +81,7 @@ export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
                                 );
                             })}
 
-                            {/* 主题切换按钮 */}
-                            <button
-                                onClick={onToggleDarkMode}
-                                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                                aria-label={darkMode ? '切换到亮色模式' : '切换到暗色模式'}
-                            >
-                                {darkMode ? (
-                                    <Sun className="w-5 h-5 text-yellow-500" />
-                                ) : (
-                                    <Moon className="w-5 h-5 text-gray-700" />
-                                )}
-                            </button>
+
                         </div>
                     </div>
                 </div>
@@ -111,17 +109,7 @@ export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
                                 </span>
                             </Link>
                         </div>
-                        <button
-                            onClick={onToggleDarkMode}
-                            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                            aria-label={darkMode ? '切换到亮色模式' : '切换到暗色模式'}
-                        >
-                            {darkMode ? (
-                                <Sun className="w-5 h-5 text-yellow-500" />
-                            ) : (
-                                <Moon className="w-5 h-5 text-gray-700" />
-                            )}
-                        </button>
+
                     </div>
                 </div>
             </header>
@@ -182,27 +170,6 @@ export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
                         })}
                     </nav>
 
-                    {/* 移动端主题切换 */}
-                    <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                        <button
-                            onClick={onToggleDarkMode}
-                            className="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                        >
-                            <div className="flex items-center space-x-3">
-                                {darkMode ? (
-                                    <Sun className="w-5 h-5 text-yellow-500" />
-                                ) : (
-                                    <Moon className="w-5 h-5 text-gray-700" />
-                                )}
-                                <span className="font-medium text-gray-700 dark:text-gray-300">
-                                    {darkMode ? '亮色模式' : '暗色模式'}
-                                </span>
-                            </div>
-                            <span className="text-sm text-gray-500 dark:text-gray-400">
-                                点击切换
-                            </span>
-                        </button>
-                    </div>
                 </div>
             </div>
         </>

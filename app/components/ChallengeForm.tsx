@@ -229,10 +229,10 @@ export default function ChallengeForm({
                                         </div>
                                         <div>
                                             <div className="font-medium text-gray-900 dark:text-white">
-                                                {selectedSong.title}
+                                                {selectedSong.title_cn}
                                             </div>
                                             <div className="text-sm text-gray-500 dark:text-gray-400">
-                                                {selectedSong.title_cn}
+                                                {selectedSong.title}
                                             </div>
                                         </div>
                                     </>
@@ -258,10 +258,10 @@ export default function ChallengeForm({
                                             className="w-full px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 last:border-b-0"
                                         >
                                             <div className="font-medium text-gray-900 dark:text-white">
-                                                {song.title}
+                                                {song.title_cn}
                                             </div>
                                             <div className="text-sm text-gray-500 dark:text-gray-400">
-                                                {song.title_cn}
+                                                {song.title}
                                             </div>
                                             <div className="flex gap-1 mt-1">
                                                 {song.levels.map(level => (
@@ -269,7 +269,12 @@ export default function ChallengeForm({
                                                         key={level}
                                                         className="px-2 py-1 text-xs rounded bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
                                                     >
-                                                        难度{level}
+                                                        <img
+                                                            src={`/level_${level}.png`}
+                                                            alt={`难度 ${level}`}
+                                                            className="w-6 h-6 sm:w-5 sm:h-5"
+                                                            title={`难度 ${level}`}
+                                                        />
                                                     </span>
                                                 ))}
                                             </div>
@@ -299,7 +304,12 @@ export default function ChallengeForm({
                                     : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                                     }`}
                             >
-                                难度{difficulty}
+                                <img
+                                    src={`/level_${difficulty}.png`}
+                                    alt={`难度 ${difficulty}`}
+                                    className="w-6 h-6 sm:w-5 sm:h-5"
+                                    title={`难度 ${difficulty}`}
+                                />
                             </button>
                         ))}
                     </div>
@@ -318,9 +328,6 @@ export default function ChallengeForm({
                             {stars.toFixed(1)}
                         </div>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                        该难度对应的星数（constant值）
-                    </p>
                 </div>
             )}
 

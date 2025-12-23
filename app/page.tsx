@@ -5,25 +5,13 @@ import Navbar from '@/app/components/Navbar';
 import MonthlyChallengeTable from '@/app/components/MonthlyChallengeTable';
 import { MonthlyChallengeData } from '@/app/types';
 import { Calendar, RefreshCw, AlertCircle } from 'lucide-react';
+import { useDarkMode } from '@/app/hooks/useDarkMode';
 
 export default function HomePage() {
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, toggleDarkMode, isUsingSystem, getToggleLabel, getToggleText } = useDarkMode();
   const [monthlyData, setMonthlyData] = useState<MonthlyChallengeData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // 切换暗色模式
-  const toggleDarkMode = () => {
-    setDarkMode(prevDarkMode => {
-      const newDarkMode = !prevDarkMode;
-      if (newDarkMode) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-      return newDarkMode;
-    });
-  };
 
   // 加载数据
   const loadData = async () => {
@@ -63,9 +51,15 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className={`min-h-screen transition-colors duration-200 ${darkMode ? 'dark' : ''}`}>
+    <div className="min-h-screen transition-colors duration-200">
       {/* 导航栏 */}
-      <Navbar darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
+      <Navbar
+        darkMode={darkMode}
+        onToggleDarkMode={toggleDarkMode}
+        isUsingSystem={isUsingSystem}
+        toggleLabel={getToggleLabel()}
+        toggleText={getToggleText()}
+      />
 
       {/* 主内容 */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -113,7 +107,7 @@ export default function HomePage() {
           <div className="text-center py-12">
             <Calendar className="w-12 h-12 mx-auto mb-4 text-gray-400" />
             <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-              暂无课题数据
+              暂无课题
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
               challenge-data目录中没有找到JSON文件
@@ -136,9 +130,9 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-4">
                   <Calendar className="w-5 h-5 text-blue-500" />
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    {monthData.yearMonth} 课题数据
+                    {monthData.yearMonth}
                     <span className="ml-2 text-sm font-normal text-gray-500 dark:text-gray-400">
-                      ({monthData.data.totalChallenges}个课题)
+                      ({monthData.data.totalChallenges}首)
                     </span>
                   </h2>
                 </div>
