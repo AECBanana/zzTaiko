@@ -154,7 +154,7 @@ export default function PhotosPage() {
                     <button
                         type="button"
                         onClick={() => setShowControls(!showControls)}
-                        className="flex items-center justify-center w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200"
+                        className="flex items-center justify-center w-14 h-14 bg-[#EA580C] hover:bg-[#EA580C] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200"
                         aria-label="打开搜索"
                         title="搜索照片"
                     >
