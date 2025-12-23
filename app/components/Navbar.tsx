@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Moon, Sun, Home, Images } from 'lucide-react';
+import { Menu, X, Moon, Sun, Home, Images, FileText } from 'lucide-react';
 
 interface NavbarProps {
     darkMode: boolean;
@@ -17,6 +17,7 @@ export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
     const navigation = [
         { name: '每月课题', href: '/', icon: Home },
         { name: '群相册', href: '/photos', icon: Images },
+        { name: '课题生成器', href: '/challenge-generator', icon: FileText },
     ];
 
     const toggleMobileMenu = () => {
@@ -36,7 +37,12 @@ export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
                         {/* Logo */}
                         <div className="flex items-center">
                             <Link href="/" className="flex items-center space-x-2">
-                                <h1 className="text-2xl font-bold text-black dark:text-white">
+                                <h1
+                                    className="text-3xl"
+                                    style={{
+                                        color: darkMode ? 'white' : '#FB923C'
+                                    }}
+                                >
                                     漳州太鼓
                                 </h1>
                             </Link>
@@ -52,8 +58,12 @@ export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
                                         key={item.name}
                                         href={item.href}
                                         className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors ${isActive
-                                            ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
-                                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                                            ? darkMode
+                                                ? 'bg-[#FFEDD5]/60 text-[#EA580C]'
+                                                : 'bg-[#FFEDD5]/60 text-[#EA580C]'
+                                            : darkMode
+                                                ? 'text-gray-300 hover:text-white hover:bg-[#EA580C]/80'
+                                                : 'text-gray-700 hover:text-white hover:bg-[#EA580C]/80'
                                             }`}
                                     >
                                         <Icon className="w-4 h-4" />
@@ -160,8 +170,12 @@ export default function Navbar({ darkMode, onToggleDarkMode }: NavbarProps) {
                                     href={item.href}
                                     onClick={closeMobileMenu}
                                     className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${isActive
-                                        ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
-                                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                                        ? darkMode
+                                            ? 'bg-blue-900/30 text-blue-300'
+                                            : 'bg-blue-100 text-blue-700'
+                                        : darkMode
+                                            ? 'text-gray-300 hover:bg-gray-800'
+                                            : 'text-gray-700 hover:bg-gray-100'
                                         }`}
                                 >
                                     <Icon className="w-5 h-5" />

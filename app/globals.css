@@ -11,6 +11,15 @@
   --body-gradient-color-3: transparent;
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* 设置 dark 模式为 class 策略 */
+  --dark-mode: class;
+}
 
 /* 暗色主题变量覆盖 */
 .dark {
