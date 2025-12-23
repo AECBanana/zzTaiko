@@ -69,7 +69,7 @@ export default function MonthlyChallengeTable({
                             </div>
                             <div>
                                 <h3 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                                    {yearMonth} 课题数据
+                                    {yearMonth} 课题
                                 </h3>
                                 <div className="flex items-center gap-4 mt-1">
                                     <span className={`text-sm flex items-center gap-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -78,10 +78,7 @@ export default function MonthlyChallengeTable({
                                     </span>
                                     <span className={`text-sm flex items-center gap-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                                         <Music className="w-3 h-3" />
-                                        {totalChallenges}个课题
-                                    </span>
-                                    <span className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                                        生成时间: {formatDate(generatedAt)}
+                                        {totalChallenges}首
                                     </span>
                                 </div>
                             </div>
