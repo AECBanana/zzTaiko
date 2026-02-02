@@ -1,0 +1,55 @@
+{
+  "challenges": [
+    {
+      "id": "challenge_1770027238220_1s5wdc0q4",
+      "songId": 792,
+      "songTitle": "only my railgun",
+      "songTitleCn": "only my railgun",
+      "difficulty": "4",
+      "stars": 7.2,
+      "requiredScore": 82,
+      "reward": "15币",
+      "notes": "所以魔法禁书目录什么时候完结",
+      "createdAt": "2026-02-02T10:13:58.220Z"
+    },
+    {
+      "id": "challenge_1770027270735_foo1v3skp",
+      "songId": 61,
+      "songTitle": "オフ♨ロック",
+      "songTitleCn": "Off ♨ Rock",
+      "difficulty": "4",
+      "stars": 8,
+      "requiredScore": 84,
+      "reward": "30币",
+      "notes": "听说会被创",
+      "createdAt": "2026-02-02T10:14:30.735Z"
+    },
+    {
+      "id": "challenge_1770027686208_8wbvw0l01",
+      "songId": 348,
+      "songTitle": "らいとにんぐ ぱっしょん",
+      "songTitleCn": "Lightning Passion",
+      "difficulty": "5",
+      "stars": 9,
+      "requiredScore": 85,
+      "reward": "45币",
+      "notes": "什么？你还能打",
+      "createdAt": "2026-02-02T10:21:26.208Z"
+    },
+    {
+      "id": "challenge_1770027982987_ms4dj5bnj",
+      "songId": 1279,
+      "songTitle": "キャラメル・ジャンキヰ",
+      "songTitleCn": "焦糖沉迷",
+      "difficulty": "4",
+      "stars": 10,
+      "requiredScore": 86,
+      "reward": "其他奖励",
+      "customReward": "lovelive 缪斯文件夹一张，先到先得",
+      "notes": "这个总能玩一点点吧",
+      "createdAt": "2026-02-02T10:26:22.987Z"
+    }
+  ],
+  "generatedAt": "2026-02-02T10:26:26.759Z",
+  "totalChallenges": 4
+}
