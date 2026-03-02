@@ -1,0 +1,51 @@
+{
+  "challenges": [
+    {
+      "id": "challenge_1772441144999_zk4yv3l0p",
+      "songId": 141,
+      "songTitle": "Fly away",
+      "songTitleCn": "Fly away",
+      "difficulty": "4",
+      "stars": 7.9,
+      "requiredScore": 80,
+      "reward": "15币",
+      "createdAt": "2026-03-02T08:45:44.999Z"
+    },
+    {
+      "id": "challenge_1772442767261_44abfbz6f",
+      "songId": 926,
+      "songTitle": "命に嫌われている。",
+      "songTitleCn": "Hated by Life",
+      "difficulty": "5",
+      "stars": 8.6,
+      "requiredScore": 83,
+      "reward": "30币",
+      "createdAt": "2026-03-02T09:12:47.261Z"
+    },
+    {
+      "id": "challenge_1772442785057_1429fd7kg",
+      "songId": 154,
+      "songTitle": "Garakuta Doll Play",
+      "songTitleCn": "Garakuta Doll Play",
+      "difficulty": "4",
+      "stars": 9.7,
+      "requiredScore": 83,
+      "reward": "45币",
+      "createdAt": "2026-03-02T09:13:05.057Z"
+    },
+    {
+      "id": "challenge_1772442958345_8clrihzj6",
+      "songId": 1043,
+      "songTitle": "憎悪と醜悪の花束",
+      "songTitleCn": "憎恶与丑恶的花束",
+      "difficulty": "4",
+      "stars": 10.5,
+      "requiredScore": 80,
+      "reward": "其他奖励",
+      "customReward": "学园偶像大师 藤田琴音奴奴一个(打歌服ver.)",
+      "createdAt": "2026-03-02T09:15:58.345Z"
+    }
+  ],
+  "generatedAt": "2026-03-02T09:16:01.251Z",
+  "totalChallenges": 4
+}
