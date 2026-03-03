@@ -249,10 +249,10 @@ export default function TaikoStatus({ config }: TaikoStatusProps) {
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-6">
           <div className="flex flex-col gap-2 text-black dark:text-white">
-            <p className='flex flex-row gap-4'><Wallpaper size={24} />{screen}</p>
-            <p className='flex flex-row gap-4'><Headphones size={24} />{headset}</p>
-            <p className='flex flex-row gap-4'><Coins size={24} />{coin}</p>
-            <p className='flex flex-row gap-4'><Drum size={24} />{other}</p>
+            <p className='flex flex-row gap-4'><div><Wallpaper size={24} /></div>{screen}</p>
+            <p className='flex flex-row gap-4'><div><Headphones size={24} /></div>{headset}</p>
+            <p className='flex flex-row gap-4'><div><Coins size={24} /></div>{coin}</p>
+            <p className='flex flex-row gap-4'><div><Drum size={24} /></div>{other}</p>
           </div>
         </div>
 
