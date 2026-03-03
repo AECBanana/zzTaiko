@@ -1,7 +1,7 @@
 'use client';
 
 import { MonthlyChallengeData, Challenge } from '@/app/types';
-import { Music, Star, Target, Gift, Calendar, FileText, ChevronDown, ChevronUp } from 'lucide-react';
+import { Music, Star, Target, Gift, Calendar, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
 interface MonthlyChallengeTableProps {
@@ -19,20 +19,8 @@ export default function MonthlyChallengeTable({
 }: MonthlyChallengeTableProps) {
     const [isExpanded, setIsExpanded] = useState(!expandable); // 如果不可展开，默认展开
 
-    const { yearMonth, fileName, data } = monthlyData;
-    const { challenges, generatedAt, totalChallenges } = data;
-
-    // 格式化日期
-    const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('zh-CN', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-    };
+    const { yearMonth, data } = monthlyData;
+    const { challenges, totalChallenges } = data;
 
     // 格式化奖励显示
     const formatReward = (challenge: Challenge) => {

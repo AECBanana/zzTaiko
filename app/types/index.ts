@@ -138,4 +138,8 @@ export interface TaikoStatusConfig {
     title: string;              // 配置标题
     player1Texts: TextBoxConfig[]; // 第一张图片的文本框配置数组
     player2Texts: TextBoxConfig[]; // 第二张图片的文本框配置数组
+    screen:string;
+    headset:string;
+    coin:string;
+    other:string;
 }
