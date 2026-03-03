@@ -1,0 +1,107 @@
+{
+  "title": "尖锋玩家/宝贝王",
+  "player1Texts": [
+    {
+      "id": "leftKa",
+      "x": 220,
+      "y": 33,
+      "text": "左蓝轻点的棒子会吃",
+      "color": "#BDB76B",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "right"
+    },
+    {
+      "id": "rightKa",
+      "x": 280,
+      "y": 33,
+      "text": "右蓝正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "left"
+    },
+    {
+      "id": "leftDon",
+      "x": 220,
+      "y": 90,
+      "text": "左红正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "right"
+    },
+    {
+      "id": "rightDon",
+      "x": 280,
+      "y": 90,
+      "text": "右红正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "left"
+    },
+    {
+      "id": "headset",
+      "x": 250,
+      "y": 180,
+      "text": "3.5mm耳机口已安装，音量在鼓后面调整",
+      "color": "#3d3d3d",
+      "fontSize": 12,
+      "backgroundColor": "#ffffff",
+      "textAlign": "center"
+    }
+  ],
+  "player2Texts": [
+    {
+      "id": "leftKa",
+      "x": 220,
+      "y": 25,
+      "text": "左蓝异常 过轻的棒子会吃",
+      "color": "#DC143C",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "right"
+    },
+    {
+      "id": "rightKa",
+      "x": 300,
+      "y": 50,
+      "text": "右蓝正常 但往右点的位置会串红",
+      "color": "#DC143C",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "left"
+    },
+    {
+      "id": "leftDon",
+      "x": 220,
+      "y": 90,
+      "text": "左红正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "right"
+    },
+    {
+      "id": "rightDon",
+      "x": 280,
+      "y": 90,
+      "text": "右红正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "left"
+    },
+    {
+      "id": "headset",
+      "x": 250,
+      "y": 180,
+      "text": "3.5mm耳机口已安装，音量在鼓后面调整",
+      "color": "#3d3d3d",
+      "fontSize": 12,
+      "backgroundColor": "#ffffff",
+      "textAlign": "center"
+    }
+  ]
+}

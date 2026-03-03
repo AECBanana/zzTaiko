@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Navbar from '@/app/components/Navbar';
 import MonthlyChallengeTable from '@/app/components/MonthlyChallengeTable';
 import { MonthlyChallengeData } from '@/app/types';
 import { Calendar, RefreshCw, AlertCircle } from 'lucide-react';
@@ -52,14 +51,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen transition-colors duration-200">
-      {/* 导航栏 */}
-      <Navbar
-        darkMode={darkMode}
-        onToggleDarkMode={toggleDarkMode}
-        isUsingSystem={isUsingSystem}
-        toggleLabel={getToggleLabel()}
-        toggleText={getToggleText()}
-      />
 
       {/* 主内容 */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

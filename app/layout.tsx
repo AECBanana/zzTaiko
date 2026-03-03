@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ClientNavbarWrapper from '@/app/components/ClientNavbarWrapper';
 
 import localFont from 'next/font/local'
 
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${hkktl.className} antialiased`}
       >
+        <ClientNavbarWrapper />
         {children}
       </body>
     </html>

@@ -117,3 +117,25 @@ export interface DataLoadState {
     error: string | null;
     data: MonthlyChallengeData[];
 }
+
+// 文本框对齐方式
+export type TextAlign = 'left' | 'center' | 'right';
+
+// 文本框配置类型
+export interface TextBoxConfig {
+    id: string;           // 唯一标识符
+    x: number;           // X坐标（像素）
+    y: number;           // Y坐标（像素）
+    text: string;        // 文本内容
+    color?: string;      // 文本颜色（可选，默认黑色）
+    fontSize?: number;   // 字体大小（可选，默认14px）
+    backgroundColor?: string; // 背景颜色（可选，默认透明）
+    textAlign?: TextAlign; // 文本对齐方式（可选，默认左对齐）
+}
+
+// TaikoStatus配置类型
+export interface TaikoStatusConfig {
+    title: string;              // 配置标题
+    player1Texts: TextBoxConfig[]; // 第一张图片的文本框配置数组
+    player2Texts: TextBoxConfig[]; // 第二张图片的文本框配置数组
+}

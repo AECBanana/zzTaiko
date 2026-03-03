@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Moon, Sun, Home, Images, FileText } from 'lucide-react';
+import { Menu, X, Info, Home, Images, FileText } from 'lucide-react';
 
 interface NavbarProps {
     darkMode: boolean;
@@ -25,6 +25,7 @@ export default function Navbar({
 
     const navigation = [
         { name: '每月课题', href: '/', icon: Home },
+        {name: '鼓况',href:'/status',icon:Info},
         { name: '群相册', href: '/photos', icon: Images },
         { name: '课题生成器', href: '/challenge-generator', icon: FileText },
     ];

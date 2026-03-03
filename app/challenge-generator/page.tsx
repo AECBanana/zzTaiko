@@ -1,12 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Navbar from '@/app/components/Navbar';
 import ChallengeForm from '@/app/components/ChallengeForm';
 import ChallengeList from '@/app/components/ChallengeList';
 import { Challenge, SongOption } from '@/app/types';
 import { fetchSongs } from '@/app/lib/api';
-import { Download, Trash2, Plus, FileText } from 'lucide-react';
+import { Download, Trash2, FileText } from 'lucide-react';
 
 export default function ChallengeGeneratorPage() {
     const [challenges, setChallenges] = useState<Challenge[]>([]);
@@ -152,23 +151,9 @@ export default function ChallengeGeneratorPage() {
         URL.revokeObjectURL(url);
     };
 
-    // 切换暗色模式
-    const toggleDarkMode = () => {
-        setDarkMode(prevDarkMode => {
-            const newDarkMode = !prevDarkMode;
-            if (newDarkMode) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-            return newDarkMode;
-        });
-    };
 
     return (
         <div className={`min-h-screen transition-colors duration-200 ${darkMode ? 'dark' : ''}`}>
-            {/* 导航栏 */}
-            <Navbar darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
 
             {/* 主内容 */}
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

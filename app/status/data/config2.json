@@ -1,0 +1,107 @@
+{
+  "title": "星际传奇",
+  "player1Texts": [
+    {
+      "id": "leftKa",
+      "x": 220,
+      "y": 33,
+      "text": "左蓝正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "right"
+    },
+    {
+      "id": "rightKa",
+      "x": 280,
+      "y": 33,
+      "text": "右蓝正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "left"
+    },
+    {
+      "id": "leftDon",
+      "x": 220,
+      "y": 90,
+      "text": "左红正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "right"
+    },
+    {
+      "id": "rightDon",
+      "x": 280,
+      "y": 90,
+      "text": "右红正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "left"
+    },
+    {
+      "id": "headset",
+      "x": 250,
+      "y": 180,
+      "text": "无耳机口",
+      "color": "#3d3d3d",
+      "fontSize": 12,
+      "backgroundColor": "#ffffff",
+      "textAlign": "center"
+    }
+  ],
+  "player2Texts": [
+    {
+      "id": "leftKa",
+      "x": 220,
+      "y": 33,
+      "text": "左蓝正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "right"
+    },
+    {
+      "id": "rightKa",
+      "x": 280,
+      "y": 33,
+      "text": "右蓝正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "left"
+    },
+    {
+      "id": "leftDon",
+      "x": 220,
+      "y": 90,
+      "text": "左红正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "right"
+    },
+    {
+      "id": "rightDon",
+      "x": 280,
+      "y": 90,
+      "text": "右红正常",
+      "color": "#000000",
+      "fontSize": 16,
+      "backgroundColor": "#ffffff",
+      "textAlign": "left"
+    },
+    {
+      "id": "headset",
+      "x": 250,
+      "y": 180,
+      "text": "无耳机口",
+      "color": "#3d3d3d",
+      "fontSize": 12,
+      "backgroundColor": "#ffffff",
+      "textAlign": "center"
+    }
+  ]
+}

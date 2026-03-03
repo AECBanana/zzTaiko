@@ -1,13 +1,12 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import Navbar from '@/app/components/Navbar';
 import PhotoGallery from '@/app/components/PhotoGallery';
 import PhotoDetailModal from '@/app/components/PhotoDetailModal';
 import ImageModal from '@/app/components/ImageModal';
 import { Photo, Pagination } from '@/app/types';
 import { fetchPhotos } from '@/app/lib/api';
-import { Search, ChevronUp, X } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import { useDarkMode } from '@/app/hooks/useDarkMode';
 
 export default function PhotosPage() {
@@ -16,8 +15,7 @@ export default function PhotosPage() {
     const [loadingMore, setLoadingMore] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [sortBy, setSortBy] = useState('newest');
-    const [showControls, setShowControls] = useState(false); // 控制搜索栏显示/隐藏
-    const { darkMode, toggleDarkMode, isUsingSystem, getToggleLabel, getToggleText } = useDarkMode();
+    const [showControls, setShowControls] = useState(false);
     const [pagination, setPagination] = useState<Pagination>({
         page: 1,
         limit: 20,
@@ -138,14 +136,6 @@ export default function PhotosPage() {
 
     return (
         <div className="min-h-screen transition-colors duration-200">
-            {/* 导航栏 */}
-            <Navbar
-                darkMode={darkMode}
-                onToggleDarkMode={toggleDarkMode}
-                isUsingSystem={isUsingSystem}
-                toggleLabel={getToggleLabel()}
-                toggleText={getToggleText()}
-            />
 
             {/* 主内容区域 */}
             <main className="pt-4 px-4 relative">
