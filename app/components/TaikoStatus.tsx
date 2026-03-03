@@ -96,8 +96,8 @@ function ImageWithPointsAndTexts({
 
   return (
     <div className="flex-1 min-w-[300px] max-w-full">
-      <div className="mb-2 flex items-center justify-between">
-        <h4 className="font-medium text-gray-700 dark:text-gray-300">
+      <div className="mb-2 flex items-center justify-center">
+        <h4 className="font-bold text-3xl text-gray-700 dark:text-gray-300">
           {title}
         </h4>
       </div>
