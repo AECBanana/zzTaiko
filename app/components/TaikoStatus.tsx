@@ -216,12 +216,13 @@ function ImageWithPointsAndTexts({
 }
 
 export default function TaikoStatus({ config }: TaikoStatusProps) {
-  const { title, player1Texts, player2Texts,screen,headset,coin,other } = config;
+  const { title, player1Texts, player2Texts,screen,headset,coin,other,posUrl } = config;
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 mb-6">
       <div className="mb-4 pb-3 border-b border-gray-200 dark:border-gray-700">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <h3 className="text-xl font-bold text-gray-800 dark:text-white">{title}</h3>
+          <a href={posUrl} target="_blank" rel="noreferrer" className="text-sm text-gray-500 hover:text-gray-600 dark:text-gray-400">高德地图</a>
         </div>
       </div>
 
@@ -247,11 +248,11 @@ export default function TaikoStatus({ config }: TaikoStatusProps) {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-6">
-          <div className="flex flex-col gap-2">
-            <p className='flex flex-row gap-4'><Wallpaper />{screen}</p>
-            <p className='flex flex-row gap-4'><Headphones />{headset}</p>
-            <p className='flex flex-row gap-4'><Coins />{coin}</p>
-            <p className='flex flex-row gap-4'><Drum />{other}</p>
+          <div className="flex flex-col gap-2 text-black dark:text-white">
+            <p className='flex flex-row gap-4'><Wallpaper size={24} />{screen}</p>
+            <p className='flex flex-row gap-4'><Headphones size={24} />{headset}</p>
+            <p className='flex flex-row gap-4'><Coins size={24} />{coin}</p>
+            <p className='flex flex-row gap-4'><Drum size={24} />{other}</p>
           </div>
         </div>
 

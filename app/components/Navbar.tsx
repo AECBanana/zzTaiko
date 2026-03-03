@@ -25,7 +25,7 @@ export default function Navbar({
 
     const navigation = [
         { name: '每月课题', href: '/', icon: Home },
-        {name: '鼓况',href:'/status',icon:Info},
+        { name: '鼓况',href:'/status',icon:Info},
         { name: '群相册', href: '/photos', icon: Images },
         { name: '课题生成器', href: '/challenge-generator', icon: FileText },
     ];
@@ -41,14 +41,14 @@ export default function Navbar({
     return (
         <>
             {/* 桌面端导航栏 */}
-            <nav className="hidden lg:block">
+            <nav className="hidden lg:block bg-white dark:bg-gray-900">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
                         <div className="flex items-center">
                             <Link href="/" className="flex items-center space-x-2">
                                 <h1
-                                    className="text-3xl"
+                                    className="text-3xl font-bold"
                                     style={{
                                         color: darkMode ? 'white' : '#FB923C'
                                     }}
@@ -89,7 +89,7 @@ export default function Navbar({
             </nav>
 
             {/* 移动端顶部栏 */}
-            <header className="lg:hidden sticky top-0 z-50 bg-white/10 dark:bg-gray-900/10 dark:border-gray-700/50">
+            <header className="lg:hidden sticky top-0 z-50 bg-white dark:bg-gray-900/10 dark:border-gray-700/50">
                 <div className="px-4 py-3">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
@@ -106,10 +106,15 @@ export default function Navbar({
                             </button>
                             <Link href="/" className="flex items-center space-x-2">
                                 <h1
-                                    className="text-2xl"
-                                    style={{
-                                        color: darkMode ? 'white' : '#FB923C'
-                                    }}
+                                    className={`text-2xl font-bold 
+                                        ? darkMode
+                                            ? 'bg-[#EA580C]/60 text-[#ffffff]'
+                                            : 'bg-[#EA580C]/60 text-[#ffffff]'
+                                        : darkMode
+                                            ? 'text-gray-300 hover:text-white hover:bg-[#EA580C]/80'
+                                            : 'text-gray-700 hover:text-white hover:bg-[#EA580C]/80'
+                                        }`}
+                                    
                                 >
                                     漳州太鼓
                                 </h1>
@@ -159,8 +164,8 @@ export default function Navbar({
                                     onClick={closeMobileMenu}
                                     className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${isActive
                                         ? darkMode
-                                            ? 'bg-[#FFEDD5]/60 text-[#EA580C]'
-                                            : 'bg-[#FFEDD5]/60 text-[#EA580C]'
+                                            ? 'bg-[#EA580C]/60 text-[#ffffff]'
+                                            : 'bg-[#EA580C]/60 text-[#ffffff]'
                                         : darkMode
                                             ? 'text-gray-300 hover:text-white hover:bg-[#EA580C]/80'
                                             : 'text-gray-700 hover:text-white hover:bg-[#EA580C]/80'

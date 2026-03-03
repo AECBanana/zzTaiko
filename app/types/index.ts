@@ -136,6 +136,7 @@ export interface TextBoxConfig {
 // TaikoStatus配置类型
 export interface TaikoStatusConfig {
     title: string;              // 配置标题
+    posUrl: string;
     player1Texts: TextBoxConfig[]; // 第一张图片的文本框配置数组
     player2Texts: TextBoxConfig[]; // 第二张图片的文本框配置数组
     screen:string;
