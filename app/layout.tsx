@@ -22,7 +22,7 @@ export default function RootLayout({
         <ClientNavbarWrapper />
         {children}
       </body>
-      <footer><a href="https://beian.miit.gov.cn/" target="_blank">闽ICP备2026007493号-1</a></footer>
+      <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><a href="https://beian.miit.gov.cn/" target="_blank">闽ICP备2026007493号-1</a></footer>
     </html>
   );
 }
