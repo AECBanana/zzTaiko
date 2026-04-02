@@ -1,0 +1,50 @@
+{
+  "challenges": [
+    {
+      "id": "challenge_1775128653387_q3yzyhtul",
+      "songId": 135,
+      "songTitle": "残酷な天使のテーゼ",
+      "songTitleCn": "残酷天使的行动纲领",
+      "difficulty": "4",
+      "stars": 7.5,
+      "requiredScore": 80,
+      "reward": "15币",
+      "createdAt": "2026-04-02T11:17:33.387Z"
+    },
+    {
+      "id": "challenge_1775128719963_60u6w1jb9",
+      "songId": 481,
+      "songTitle": "shiny smile",
+      "songTitleCn": "shiny smile",
+      "difficulty": "4",
+      "stars": 8.1,
+      "requiredScore": 80,
+      "reward": "30币",
+      "createdAt": "2026-04-02T11:18:39.963Z"
+    },
+    {
+      "id": "challenge_1775128860045_kjhj3rsq1",
+      "songId": 150,
+      "songTitle": "冬竜 ～Toryu～",
+      "songTitleCn": "冬龙 ～Toryu～",
+      "difficulty": "4",
+      "stars": 8.9,
+      "requiredScore": 80,
+      "reward": "45币",
+      "createdAt": "2026-04-02T11:21:00.045Z"
+    },
+    {
+      "id": "challenge_1775129139760_100oviqnr",
+      "songId": 1379,
+      "songTitle": "Valsqotch",
+      "songTitleCn": "Valsqotch",
+      "difficulty": "4",
+      "stars": 10.6,
+      "requiredScore": 80,
+      "reward": "45币",
+      "createdAt": "2026-04-02T11:25:39.760Z"
+    }
+  ],
+  "generatedAt": "2026-04-02T11:25:42.575Z",
+  "totalChallenges": 4
+}
